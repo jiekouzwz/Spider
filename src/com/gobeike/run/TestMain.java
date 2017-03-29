@@ -6,6 +6,7 @@ package com.gobeike.run;
 public class TestMain {
     public static void main(String[] args){
         Txt99Spider txt99Spider=new Txt99Spider();
-        txt99Spider.getInfo();
+//        txt99Spider.getInfo();
+        txt99Spider.jsoupGet();
     }
 }

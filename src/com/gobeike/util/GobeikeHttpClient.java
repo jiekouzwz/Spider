@@ -63,7 +63,7 @@ public class GobeikeHttpClient
 	/** 设置编码格式 */
 	private   String encoding = EnumEncode.utf_8.getEncoding();
 
-	public String getEncoding() {
+	private String getEncoding() {
 		return encoding;
 	}
 

@@ -2,6 +2,7 @@ package com.gobeike.util;
 
 /**
  * Created by xuff on 17-3-29.
+ * 设置网络访问的编码格式
  */
 public enum EnumEncode {
 
