@@ -1,1 +1,11 @@
-./bin
+/bin
+*.iml
+.idea
+.idea/kotlinc.xml
+将删除 .idea/libraries/
+将删除 .idea/misc.xml
+将删除 .idea/modules.xml
+将删除 .idea/vcs.xml
+将删除 .idea/workspace.xml
+将删除 bin/
+将删除 out/
