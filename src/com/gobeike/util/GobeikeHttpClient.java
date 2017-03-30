@@ -61,7 +61,15 @@ public class GobeikeHttpClient
 	private static final String HTTPS = "https";
 
 	/** 设置编码格式 */
-	private final static String encoding = "utf-8";
+	private   String encoding = EnumEncode.utf_8.getEncoding();
+
+	private String getEncoding() {
+		return encoding;
+	}
+
+	public void setEncoding(EnumEncode encoding) {
+		this.encoding = encoding.getEncoding();
+	}
 
 	/** 设置每个路由默认最大连接数 */
 	private int maxConnector = 50;
@@ -148,7 +156,7 @@ public class GobeikeHttpClient
 		try
 		{
 			httpPost = new HttpPost(url);
-			HttpEntity entity = new UrlEncodedFormEntity(params, encoding);
+			HttpEntity entity = new UrlEncodedFormEntity(params, getEncoding());
 			httpPost.setEntity(entity);
 
 			response = httpclient.execute(httpPost);
@@ -157,7 +165,7 @@ public class GobeikeHttpClient
 			{
 				throw new Exception("HTTP REQUEST FAIL,HTTP_STATUS:" + status);
 			}
-			reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), encoding));
+			reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), getEncoding()));
 
 			String lines = "";
 			while ((lines = reader.readLine()) != null)
@@ -273,7 +281,7 @@ public class GobeikeHttpClient
 	public String sendRequestByStream(String url, String strContent) throws Exception
 	{
 
-		return sendRequestByStream(url, strContent, encoding);
+		return sendRequestByStream(url, strContent, getEncoding());
 	}
 
 	/**
@@ -304,7 +312,7 @@ public class GobeikeHttpClient
 			{
 				throw new Exception("HTTP REQUEST FAIL,HTTP_STATUS:" + status);
 			}
-			reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), encoding));
+			reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), getEncoding()));
 
 			String lines = "";
 			while ((lines = reader.readLine()) != null)
@@ -395,9 +403,11 @@ public class GobeikeHttpClient
 	public static void main(String[] args) throws Exception
 	{
 		String url = "http://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient/4.5.2";
-//		GobeikeHttpClient client = new GobeikeHttpClient();
-		System.out.println(GobeikeHttpClient.sendHttpsRequestByGet(url));
+		GobeikeHttpClient client = new GobeikeHttpClient();
+//		System.out.println(GobeikeHttpClient.sendHttpsRequestByGet(url));
+		System.out.print(client.getEncoding());
 		
 	}
+
 
 }
